@@ -110,6 +110,8 @@ func (p *page) toChannel() *Channel {
 	}
 }
 
+var noBioRegex = regexp.MustCompile(`You can contact @[a-z0-9_]+ right away\.`)
+
 func (p *page) toUser() *User {
 	bio := p.Description
 
@@ -123,13 +125,4 @@ func (p *page) toUser() *User {
 		Bio:      bio,
 		Avatar:   p.Avatar,
 	}
-}
-
-var noBioRegex = regexp.MustCompile(`You can contact @[a-z0-9_]+ right away\.`)
-
-func (p *page) getUserBio() string {
-	if noBioRegex.MatchString(p.Extra) {
-		return ""
-	}
-	return p.Extra
 }

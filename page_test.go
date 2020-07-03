@@ -120,6 +120,7 @@ func TestPage(t *testing.T) {
 			Button: "Join Group",
 		},
 	} {
+		test := test
 		t.Run(test.File, func(t *testing.T) {
 			page := newFilePage(t, test.File)
 
@@ -240,6 +241,7 @@ func TestPageParse(t *testing.T) {
 			},
 		},
 	} {
+		test := test
 		t.Run(test.File, func(t *testing.T) {
 			page := newFilePage(t, test.File)
 
