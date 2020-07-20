@@ -3,6 +3,7 @@ package tgme
 import (
 	"context"
 	"net/http"
+	"strings"
 )
 
 type Parser struct {
@@ -75,6 +76,10 @@ func (psr *Parser) Parse(ctx context.Context, link string) (*Result, error) {
 
 	if client == nil {
 		client = http.DefaultClient
+	}
+
+	if !strings.Contains(link, "http://") && !strings.Contains(link, "https://") {
+		link = "https://" + link
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, link, nil)
