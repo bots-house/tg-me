@@ -1,6 +1,6 @@
 linters-settings:
   goimports:
-    local-prefixies: github.com/bots-house/share-file-bot
+    local-prefixies: github.com/bots-house/tg-me
 
 output:
   format: tab
